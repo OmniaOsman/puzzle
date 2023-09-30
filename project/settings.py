@@ -130,21 +130,14 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-# Celery Configuration Options
-CELERY_TIMEZONE = "Australia/Tasmania"
-CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 30 * 60
-CELERY_RESULT_BACKEND = 'django-db'
-CELERY_CACHE_BACKEND = 'django-cache'
-# celery setting.
-CELERY_CACHE_BACKEND = 'default'
 
-# django setting.
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'my_cache_table',
-    }
+# Django-Q settings
+Q_CLUSTER = {
+    # other settings ...
+    'retry': 60, # retry after 60 seconds if a task fails
+    'timeout': 30, # terminate a task if it runs longer than 30 seconds
+    # other settings ...
 }
+
 
 

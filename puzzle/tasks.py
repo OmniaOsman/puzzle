@@ -15,17 +15,17 @@ def solve_puzzle(data, level):
         nounce += 1
         
     # get or create the puzzle model instance with the task id
-    puzzle, created = Puzzle.objects.get_or_create(task_id=solve_puzzle.request.id)
+    # puzzle, created = Puzzle.objects.get_or_create(task_id=solve_puzzle.request.id)
 
-    # update the puzzle model instance with the data, level, nounce, solution, and status
-    puzzle.data = data
-    puzzle.level = level
-    puzzle.nounce = nounce
-    puzzle.solution = solution
-    puzzle.status = Puzzle.AsyncResult(solve_puzzle.request.id).state
+    # # update the puzzle model instance with the data, level, nounce, solution, and status
+    # puzzle.data = data
+    # puzzle.level = level
+    # puzzle.nounce = nounce
+    # puzzle.solution = solution
+    # puzzle.status = Puzzle.AsyncResult(solve_puzzle.request.id).state
     
-    # save the puzzle model instance to the database
-    puzzle.save()
+    # # save the puzzle model instance to the database
+    # puzzle.save()
     
-    # return the nounce and solution as a tuple
+    # # return the nounce and solution as a tuple
     return nounce, solution

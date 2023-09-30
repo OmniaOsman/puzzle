@@ -38,7 +38,7 @@ class PostPuzzleApiView(APIView):
         if serializer.is_valid():
             data    = serializer.validated_data['data']
             level   = serializer.validated_data['level']
-            task = solve_puzzle.apply_async((data, level))
+            task    = solve_puzzle.delay(data, level)
             task_id = task.id
 
             return Response({'task_id': task_id}, status=201)
